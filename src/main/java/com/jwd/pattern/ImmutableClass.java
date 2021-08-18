@@ -3,12 +3,12 @@ package com.jwd.pattern;
 import java.util.Arrays;
 
 final public class ImmutableClass {
-    private final int INT_FIELD;
-    private final double DOUBLE_FIELD;
-    private final boolean IS_BOOLEAN_FIELD;
-    private final String STRING_FIELD;
+    private final int intField;
+    private final double doubleField;
+    private final boolean booleanField;
+    private final String stringField;
     private final int[] arrayOfInts;
-    private final SomeOtherObject OTHER_OBJECT;
+    private final SomeOtherObject otherObject;
     private final SomeOtherObject[] otherObjects;
 
     public ImmutableClass(int intField,
@@ -19,12 +19,12 @@ final public class ImmutableClass {
                           SomeOtherObject otherObject,
                           SomeOtherObject[] otherObjects) throws CloneNotSupportedException {
 
-        this.INT_FIELD = intField;
-        this.DOUBLE_FIELD = doubleField;
-        this.IS_BOOLEAN_FIELD = isBooleanField;
-        this.STRING_FIELD = stringField;
+        this.intField = intField;
+        this.doubleField = doubleField;
+        this.booleanField = isBooleanField;
+        this.stringField = stringField;
         this.arrayOfInts = arrayOfInts.clone();
-        this.OTHER_OBJECT = (SomeOtherObject) otherObject.clone();
+        this.otherObject = (SomeOtherObject) otherObject.clone();
         this.otherObjects = getSomeOtherObjects(otherObjects);
     }
 
@@ -40,25 +40,25 @@ final public class ImmutableClass {
     }
 
     public int getIntField() {
-        return INT_FIELD;
+        return intField;
     }
 
     public double getDoubleField() {
-        return DOUBLE_FIELD;
+        return doubleField;
     }
 
     public boolean isBooleanField() {
-        return IS_BOOLEAN_FIELD;
+        return booleanField;
     }
 
-    public String getSTRING_FIELD() {
-        return STRING_FIELD;
+    public String getstringField() {
+        return stringField;
     }
 
 
-    public SomeOtherObject getOTHER_OBJECT() throws CloneNotSupportedException {
+    public SomeOtherObject getotherObject() throws CloneNotSupportedException {
         SomeOtherObject object = new SomeOtherObject();
-        object= (SomeOtherObject) this.OTHER_OBJECT.clone();
+        object = (SomeOtherObject) this.otherObject.clone();
         return object;
     }
 
@@ -80,12 +80,12 @@ final public class ImmutableClass {
 
         ImmutableClass that = (ImmutableClass) o;
 
-        if (INT_FIELD != that.INT_FIELD) return false;
-        if (Double.compare(that.DOUBLE_FIELD, DOUBLE_FIELD) != 0) return false;
-        if (IS_BOOLEAN_FIELD != that.IS_BOOLEAN_FIELD) return false;
-        if (STRING_FIELD != null ? !STRING_FIELD.equals(that.STRING_FIELD) : that.STRING_FIELD != null) return false;
+        if (intField != that.intField) return false;
+        if (Double.compare(that.doubleField, doubleField) != 0) return false;
+        if (booleanField != that.booleanField) return false;
+        if (stringField != null ? !stringField.equals(that.stringField) : that.stringField != null) return false;
         if (!Arrays.equals(arrayOfInts, that.arrayOfInts)) return false;
-        if (OTHER_OBJECT != null ? !OTHER_OBJECT.equals(that.OTHER_OBJECT) : that.OTHER_OBJECT != null) return false;
+        if (otherObject != null ? !otherObject.equals(that.otherObject) : that.otherObject != null) return false;
         // Probably incorrect - comparing Object[] arrays with Arrays.equals
         return Arrays.equals(otherObjects, that.otherObjects);
     }
@@ -94,13 +94,13 @@ final public class ImmutableClass {
     public int hashCode() {
         int result;
         long temp;
-        result = INT_FIELD;
-        temp = Double.doubleToLongBits(DOUBLE_FIELD);
+        result = intField;
+        temp = Double.doubleToLongBits(doubleField);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (IS_BOOLEAN_FIELD ? 1 : 0);
-        result = 31 * result + (STRING_FIELD != null ? STRING_FIELD.hashCode() : 0);
+        result = 31 * result + (booleanField ? 1 : 0);
+        result = 31 * result + (stringField != null ? stringField.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(arrayOfInts);
-        result = 31 * result + (OTHER_OBJECT != null ? OTHER_OBJECT.hashCode() : 0);
+        result = 31 * result + (otherObject != null ? otherObject.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(otherObjects);
         return result;
     }
@@ -108,12 +108,12 @@ final public class ImmutableClass {
     @Override
     public String toString() {
         return "ImmutableClass{" +
-                "\n INT_FIELD=" + INT_FIELD +
-                ",\n DOUBLE_FIELD=" + DOUBLE_FIELD +
-                ",\n IS_BOOLEAN_FIELD=" + IS_BOOLEAN_FIELD +
-                ",\n STRING_FIELD='" + STRING_FIELD + '\'' +
+                "\n intField=" + intField +
+                ",\n doubleField=" + doubleField +
+                ",\n booleanField=" + booleanField +
+                ",\n stringField='" + stringField + '\'' +
                 ",\n arrayOfInts=" + Arrays.toString(arrayOfInts) +
-                ",\n OTHER_OBJECT=" + OTHER_OBJECT +
+                ",\n otherObject=" + otherObject +
                 ",\n otherObjects=" + Arrays.toString(otherObjects) +
                 '}';
     }
